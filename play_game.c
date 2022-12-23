@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:34:54 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/22 20:17:51 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/23 03:09:43 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ static int ft_play(t_game *game)
 		game->map[game->x_player][game->y_player] = 'P';
 		game->movement++;
 	}
-	// if (game->map[game->x_player][game->y_player] == 'X')
-	// 	return (kill_player(game),0);
+	if (game->map[game->x_player][game->y_player] == 'X')
+		return (kill_player(game),0);
 	return (1);
 }
 static int move_up_down(t_game *game,int keycode)
 {
 	int c;
-
-	c = 0;
+	
+	update_player(game,keycode);
 	if(keycode == K_W)
 	{
 		if (game->x_player == 0 || game->map[game->x_player - 1][game->y_player] == '1')
@@ -81,12 +81,14 @@ static int move_up_down(t_game *game,int keycode)
 		}
 		game->map[game->x_player - 1][game->y_player] = '0';
 	}
+	ft_printf("The number of mouvement is %d \n",game->movement);
 	return (1);
 }
 
 static int move_left_right(t_game *game,int keycode)
 {
 	int c;
+	update_player(game,keycode);
 	if(keycode == K_A)
 	{
 		if (game->y_player == 0 || game->map[game->x_player][game->y_player - 1] == '1')
@@ -113,21 +115,29 @@ static int move_left_right(t_game *game,int keycode)
 		}
 		game->map[game->x_player][game->y_player - 1] = '0';
 	}
+	ft_printf("The number of mouvement is %d \n",game->movement);
 	return (1);
 }
+void update_player(t_game *game,int keycode)
+{
+	mlx_destroy_image(game->mlx,game->player_img);
+	if (keycode == K_W)
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "./img/player_up.xpm", &game->img_width, &game->img_height);
+	if (keycode == K_S)
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "./img/player_down.xpm", &game->img_width, &game->img_height);
+	if (keycode == K_A)
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "./img/player_left.xpm", &game->img_width, &game->img_height);
+	if (keycode == K_D)	
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "./img/player_right.xpm", &game->img_width, &game->img_height);
+}	
 int key_hook(int keycode, t_game *game)
 {
 	int c;
-	int i = 0;
-	while(i < game->height && game->map != NULL)
-		{
-			ft_printf("%s\n",game->map[i]);
-			i++;
-		}
-		ft_printf("====================================\n");
+
 	if (keycode == K_esc || keycode == K_Q)
 		close_game(game);
 	if (keycode == K_W)
+		
 		c = move_up_down(game,keycode);
 	if (keycode == K_S)
 		c = move_up_down(game,keycode);
