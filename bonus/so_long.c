@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:43:06 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/23 15:39:10 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:14:36 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,11 @@ int main(int argc,char	**argv)
 			put_images(&game);
 			mlx_hook(game.mlx_win,2,0, key_hook,&game);
 			mlx_hook(game.mlx_win,17,0,close,&game);
-			//mlx_loop_hook(game.mlx, loop_hook,&game);
-
+			mlx_loop_hook(game.mlx,loop_hook ,&game);
 			mlx_loop(game.mlx);
 			
 		}
-
 		system("leaks a.out");
 	}
-	return (0);
-	
+	return (0);	
 }

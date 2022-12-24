@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 13:30:28 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/24 02:51:07 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:09:54 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void put_images(t_game *game)
             if(game->map[i][j] == 'X')
                 mlx_put_image_to_window(game->mlx,game->mlx_win,game->enemy_img,j*64,i*64); 
         }
+        display_score(game);
     }
 }

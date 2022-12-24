@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:08:58 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/24 15:42:53 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/24 16:28:33 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_game
 	void	*exit_img;
 	void	*collect_img;
 	int     movement;
-    int     finish;
+    int     rate;
     
 }               t_game;
 
