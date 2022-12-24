@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:08:58 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/23 22:16:06 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/24 15:42:53 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,5 @@ int close_game(t_game *game);
 void kill_player(t_game *game);
 void update_player(t_game *game,int keycode);
 void kill_player(t_game *game);
+void display_score(t_game *game);
 #endif

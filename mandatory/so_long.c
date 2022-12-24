@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:43:06 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/24 04:36:07 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/24 05:56:07 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 // 	put_images(game);
 // 	return (0);
 // }
-int main(int argc,char	**argv)
+int main(int argc,char **argv)
 {
 	t_game game;
 	int i;

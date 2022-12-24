@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 01:53:11 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/23 19:04:36 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/24 15:40:29 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,11 @@ void kill_player(t_game *game)
 		(game->mlx, "game_over.xpm", &game->img_width, &game->img_height);
     mlx_put_image_to_window(game->mlx, game->mlx_win, game->img,0, 0);
     ft_printf("You lose!");
+}
+void display_score(t_game *game)
+{
+    char *move;
+    //char *data;
+    move = ft_itoa(game->movement);
+    mlx_string_put(game->mlx,game->mlx_win,40,10,0x00FF0000,move);
 }

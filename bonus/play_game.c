@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:34:54 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/23 19:56:30 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/24 15:43:35 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ static int move_up_down(t_game *game,int keycode)
 		game->map[game->x_player - 1][game->y_player] = '0';
 	}
 	ft_printf("The number of mouvement is %d \n",game->movement);
+	display_score(game);
 	return (1);
 }
 
@@ -130,6 +131,7 @@ static int move_left_right(t_game *game,int keycode)
 		}
 		game->map[game->x_player][game->y_player - 1] = '0';
 	}
+	display_score(game);
 	ft_printf("The number of mouvement is %d \n",game->movement);
 	return (1);
 }
