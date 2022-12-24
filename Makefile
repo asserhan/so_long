@@ -1,5 +1,11 @@
 NAME := so_long
-SRC :=  *.c \
+SRC :=  so_long.c \
+		bonus.c \
+		window.c \
+		play_game.c \
+		map_reader.c \
+		check_map.c \
+		
 		./get_next_line/*.c \
 		./ft_printf/*.c \
 		./libft/*.c \
@@ -12,13 +18,13 @@ OBJ := $(SRC:.c=.o)
 MINILIBX := minilibx/
 
 
-%.o: %.c so_long.h
-	$(CC)  $(CFLAGS) -c $< -o $@
+# %.o: %.c 
+# 	$(CC)  $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
- 	$(CC) $(CFLAGS) -I /usr/local/include  $(SRC) $(LIB) -o $(NAME)
+	$(CC) $(CFLAGS) -I /usr/local/include $(SRC) $(LIB) -o $(NAME)
 
 clean:
 	$(RM) $(OBJ) 
