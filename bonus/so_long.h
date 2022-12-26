@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:08:58 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/25 01:18:28 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:31:55 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <mlx.h>
 # include "../libft/libft.h"
-# include "../get_next_line/get_next_line.h"
+# include "get_next_line.h"
 # include "../ft_printf/ft_printf.h"
 # include <fcntl.h>
 # include <stdio.h>
@@ -60,24 +60,23 @@ typedef struct s_game
     
 }               t_game;
 
-int check_file (char *file,t_game *map);
+int     check_file (char *file,t_game *map);
 char	**read_map(char *file,t_game *map);
 void	free_map(t_game *map);
-int check_lines(t_game *map);
-char **get_map(char *file,t_game *map);
-int check_cols (t_game *map);
-int check_rect (t_game *map);
-int check_char(t_game *map);
-void find_cords(t_game *map);
-int valid_path (t_game *map);
-void set_images (t_game *game);
-void put_images(t_game *game);
-int key_hook(int keycode, t_game *game);
-int close_game(t_game *game);
-void update_player(t_game *game,int keycode);
-void display_score(t_game *game);
-int loop_hook(t_game *game);
-int find_path(t_game *map,int x_p, int y_p,int x_e,int y_e);
-char **make_visited_array(int height, int width);
+int     check_lines(t_game *map);
+char    **get_map(char *file,t_game *map);
+int     check_cols (t_game *map);
+int     check_rect (t_game *map);
+int     check_char(t_game *map);
+void    find_cords(t_game *map);
+int     valid_path (t_game *map);
+void    set_images (t_game *game);
+void    put_images(t_game *game);
+int     key_hook(int keycode, t_game *game);
+int     close_game(t_game *game);
+void    update_player(t_game *game,int keycode);
+void    display_score(t_game *game);
+int     find_path(t_game *map,int x_p, int y_p,int x_e,int y_e);
+char    **make_visited_array(int height, int width);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:04:54 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/24 05:38:32 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/26 15:39:09 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,28 +97,24 @@ char **make_visited_array(int height, int width)
 	return (new_map);
 }
 
-int find_path(t_game *map, int x_p, int y_p, char **visited)
+int find_path(t_game *map, int x_p, int y_p, char **visited,char target)
 {
-	 static int c;
+	 //static int c;
 	
 	if (x_p < 0 || y_p < 0 || x_p >= map->height || y_p >= map->width
 			|| visited[x_p][y_p ] == '1' || map->map[x_p][y_p] == '1' )
 		return (0);
-	if (map->map[x_p][y_p] == 'C')
-	 	c++;	
-	if (map->map[x_p][y_p] == 'E')
+	if (map->map[x_p][y_p] == target)
 		return (1);
 	visited[x_p][y_p] = '1';
-	if(find_path(map, x_p + 1,y_p, visited))
+	if(find_path(map, x_p + 1,y_p, visited,target))
 		return (1);
-	if(find_path(map, x_p - 1 ,y_p , visited))
+	if(find_path(map, x_p - 1 ,y_p , visited,target))
 		return (1);
-	if(find_path(map, x_p,y_p + 1, visited))
+	if(find_path(map, x_p,y_p + 1, visited,target))
 		return (1);
-	if(find_path(map, x_p ,y_p - 1, visited))
+	if(find_path(map, x_p ,y_p - 1, visited,target))
 		return (1);
-	if (c == map->n_collect)
-		return(1);
 	return (0);
 }
 
@@ -126,7 +122,7 @@ int valid_path (t_game *map)
 {
 	find_cords(map);
 	char **visited = make_visited_array(map->height, map->width);
-	if (!find_path(map, map->x_player,map->y_player, visited))
+	if (!find_path(map, map->x_player,map->y_player, visited,'E'))
 	{
 		free_map(map);
 		free_aray(visited);
@@ -138,27 +134,27 @@ int valid_path (t_game *map)
 char **get_map(char *file,t_game *map)
 {
 	if (!check_file(file,map))
-		return (ft_printf("Error\nfile is invalid or may not exist"),NULL);
+		return (ft_printf("Error\nfile is invalid or may not exist\n"),NULL);
 	map->map = read_map(file,map);
 	if (!map->map)
-		return (ft_printf("Error\nMap is empty"),NULL);
+		return (ft_printf("Error\nMap is empty\n"),NULL);
 	if (!check_rect(map))
 	{
 		free_map(map);
-		return(ft_printf("Error\nMap is not rectangular"),NULL);
-	}
-	if (!check_char(map))
-	{
-		free_map(map);
-		return (ft_printf("Error\nWrong characters or duplicates (exit/start)"),NULL);
+		return(ft_printf("Error\nMap is not rectangular\n"),NULL);
 	}
 	if (!check_lines(map) || !check_cols (map))
 	{
 		free_map(map);
-		return (ft_printf("Error\nMap not closed by walls"),NULL);
+		return (ft_printf("Error\nMap not closed by walls\n"),NULL);
+	}
+	if (!check_char(map))
+	{
+		free_map(map);
+		return (ft_printf("Error\nWrong characters or duplicates (exit/start)\n"),NULL);
 	}
 	if (!valid_path(map))
-		return (ft_printf("Error\nThe is no valid path in the map"),NULL);
+		return (ft_printf("Error\nThe is no valid path in the map\n"),NULL);
 	return (map->map);
 }
 

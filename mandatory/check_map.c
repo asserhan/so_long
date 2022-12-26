@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:17:19 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/20 21:57:57 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/26 15:41:33 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int check_char(t_game *map)
 {
 	int i;
 	int j;
+	char **visited ;
+	
 	
 	map->n_player = 0;
 	map->n_exit = 0;
@@ -90,14 +92,23 @@ int check_char(t_game *map)
 		j = -1;
 		while (map->map[i][++j])
 		{
-			if (map->map[i][j] != '1' && map->map[i][j] != '0'&& map->map[i][j] != 'P' && map->map[i][j] != 'C' && map->map[i][j] != 'E' && map->map[i][j] != 'X')
+			if (map->map[i][j] != '1' && map->map[i][j] != '0'&& map->map[i][j] != 'P' && map->map[i][j] != 'C' && map->map[i][j] != 'E')
 				return (0);
 			if (map->map[i][j] == 'P')
 				map->n_player++;
 			if (map->map[i][j] == 'E')
 				map->n_exit++;
 			if (map->map[i][j] == 'C')
+			{
+				visited = make_visited_array(map->height, map->width);
+				if(!find_path(map,map->x_player,map->y_player,visited,'C'))
+				{
+						free_aray(visited);
+						return (0);
+				}
+				free_aray(visited);
 				map->n_collect++;
+			}
 		}
 	}
 	if (!(map->n_player == 1 && map->n_exit == 1 && map->n_collect >= 1))

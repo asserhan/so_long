@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:34:54 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/23 22:30:32 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:44:39 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void update_player(t_game *game,int keycode)
 {
 	mlx_destroy_image(game->mlx,game->player_img);
 	if (keycode == K_W)
-		game->player_img = mlx_xpm_file_to_image(game->mlx, "img/player1.xpm", &game->img_width, &game->img_height);
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "mandatory/img/player1.xpm", &game->img_width, &game->img_height);
 	if (keycode == K_S)
-		game->player_img = mlx_xpm_file_to_image(game->mlx, "img/player1.xpm", &game->img_width, &game->img_height);
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "mandatory/img/player1.xpm", &game->img_width, &game->img_height);
 	if (keycode == K_A)
-		game->player_img = mlx_xpm_file_to_image(game->mlx, "img/player1.xpm", &game->img_width, &game->img_height);
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "mandatory/img/player1.xpm", &game->img_width, &game->img_height);
 	if (keycode == K_D)	
-		game->player_img = mlx_xpm_file_to_image(game->mlx, "img/player2.xpm", &game->img_width, &game->img_height);
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "mandatory/img/player2.xpm", &game->img_width, &game->img_height);
 }	
 int close_game(t_game *game)
 {
@@ -132,10 +132,10 @@ int key_hook(int keycode, t_game *game)
 {
 	int c;
 
+	c = 0;
 	if (keycode == K_esc || keycode == K_Q)
 		close_game(game);
 	if (keycode == K_W)
-		
 		c = move_up_down(game,keycode);
 	if (keycode == K_S)
 		c = move_up_down(game,keycode);

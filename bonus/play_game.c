@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:34:54 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/24 17:11:14 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:14:53 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void update_player(t_game *game,int keycode)
 {
 	mlx_destroy_image(game->mlx,game->player_img);
 	if (keycode == K_W)
-		game->player_img = mlx_xpm_file_to_image(game->mlx, "img/player1.xpm", &game->img_width, &game->img_height);
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "bonus/img/player1.xpm", &game->img_width, &game->img_height);
 	if (keycode == K_S)
-		game->player_img = mlx_xpm_file_to_image(game->mlx, "img/player1.xpm", &game->img_width, &game->img_height);
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "bonus/img/player1.xpm", &game->img_width, &game->img_height);
 	if (keycode == K_A)
-		game->player_img = mlx_xpm_file_to_image(game->mlx, "img/player1.xpm", &game->img_width, &game->img_height);
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "bonus/img/player1.xpm", &game->img_width, &game->img_height);
 	if (keycode == K_D)	
-		game->player_img = mlx_xpm_file_to_image(game->mlx, "img/player2.xpm", &game->img_width, &game->img_height);
+		game->player_img = mlx_xpm_file_to_image(game->mlx, "bonus/img/player2.xpm", &game->img_width, &game->img_height);
 }	
 int close_game(t_game *game)
 {

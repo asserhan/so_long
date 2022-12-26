@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 13:30:28 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/24 23:58:26 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:14:00 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 void set_images (t_game *game)
 {
-    
-    game->screen_img = mlx_xpm_file_to_image(game->mlx,"img/screen.xpm",&game->img_width,&game->img_height);
-    game->wall_img = mlx_xpm_file_to_image(game->mlx,"img/wall.xpm",&game->img_width,&game->img_height);
-    game->player_img = mlx_xpm_file_to_image(game->mlx,"img/player1.xpm",&game->img_width,&game->img_height);
-    game->collect_img = mlx_xpm_file_to_image(game->mlx,"img/collectible.xpm",&game->img_width,&game->img_height);
-    game->enemy_img = mlx_xpm_file_to_image(game->mlx,"img/enemy.xpm",&game->img_width,&game->img_height);
-    game->exit_img = mlx_xpm_file_to_image(game->mlx,"img/exit.xpm",&game->img_width,&game->img_height);
+    game->screen_img = mlx_xpm_file_to_image(game->mlx,"bonus/img/screen.xpm",&game->img_width,&game->img_height);
+    game->wall_img = mlx_xpm_file_to_image(game->mlx,"bonus/img/wall.xpm",&game->img_width,&game->img_height);
+    game->player_img = mlx_xpm_file_to_image(game->mlx,"bonus/img/player1.xpm",&game->img_width,&game->img_height);
+    game->collect_img = mlx_xpm_file_to_image(game->mlx,"bonus/img/collectible.xpm",&game->img_width,&game->img_height);
+    game->enemy_img = mlx_xpm_file_to_image(game->mlx,"bonus/img/enemy.xpm",&game->img_width,&game->img_height);
+    game->exit_img = mlx_xpm_file_to_image(game->mlx,"bonus/img/exit.xpm",&game->img_width,&game->img_height);
     if (!game->screen_img || !game->wall_img || !game->player_img || !game->collect_img || !game->enemy_img || !game->exit_img)
     {
         ft_printf("Invalid xpm image \n");

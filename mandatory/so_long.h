@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:08:58 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/23 22:16:25 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/26 15:06:33 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <mlx.h>
 # include "../libft/libft.h"
-# include "../get_next_line/get_next_line.h"
+# include "get_next_line.h"
 # include "../ft_printf/ft_printf.h"
 # include <fcntl.h>
 # include <stdio.h>
@@ -51,7 +51,6 @@ typedef struct s_game
 	void	*screen_img;
 	void	*wall_img;
 	void	*player_img;
-	void	*enemy_img;
 	void	*exit_img;
 	void	*collect_img;
 	int     movement;
@@ -73,7 +72,9 @@ void set_images (t_game *game);
 void put_images(t_game *game);
 int key_hook(int keycode, t_game *game);
 int close_game(t_game *game);
-void kill_player(t_game *game);
 void update_player(t_game *game,int keycode);
-void kill_player(t_game *game);
+int find_path(t_game *map, int x_p, int y_p, char **visited,char target);
+char **make_visited_array(int height, int width);
+void free_aray(char **array);
+
 #endif
