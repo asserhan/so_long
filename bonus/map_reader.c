@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:04:54 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/24 04:33:46 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/25 01:15:18 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,23 +97,24 @@ char **make_visited_array(int height, int width)
 	return (new_map);
 }
 
-int find_path(t_game *map, int x_p, int y_p, char **visited)
+int find_path(t_game *map,int x_p, int y_p,int x_e,int y_e)
 {
-	//static int c;
+
 	if (x_p < 0 || y_p < 0 || x_p >= map->height || y_p >= map->width
-			|| visited[x_p][y_p ] == '1' || map->map[x_p][y_p] == '1')
+			||  map->map[x_p][y_p] == '1')
 		return (0);
-	if (map->map[x_p][y_p] == 'E')
+	if (map->map[x_p][y_p] == map->map[x_e][y_e])
 		return (1);
-	visited[x_p][y_p] = '1';
-	if(find_path(map, x_p + 1,y_p, visited))
+	map->map[x_p][y_p] = '1';
+	if(find_path(map, x_p + 1,y_p,x_e,y_e))
 		return (1);
-	if(find_path(map, x_p - 1 ,y_p , visited))
+	if(find_path(map, x_p - 1 ,y_p ,x_e,y_e))
 		return (1);
-	if(find_path(map, x_p,y_p + 1, visited))
+	if(find_path(map, x_p,y_p + 1, x_e,y_e))
 		return (1);
-	if(find_path(map, x_p ,y_p - 1, visited))
+	if(find_path(map, x_p ,y_p - 1,x_e,y_e))
 		return (1);
+	map->map[x_p][y_p] = '0';
 	return (0);
 }
 
@@ -121,7 +122,7 @@ int valid_path (t_game *map)
 {
 	find_cords(map);
 	char **visited = make_visited_array(map->height, map->width);
-	if (!find_path(map, map->x_player,map->y_player, visited))
+	if (!find_path(map, map->x_player,map->y_player,map->x_exit,map->y_exit))
 	{
 		free_map(map);
 		free_aray(visited);

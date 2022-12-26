@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:08:58 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/24 16:28:33 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/25 01:18:28 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_game
 	void	*collect_img;
 	int     movement;
     int     rate;
+    int     sprite;
     
 }               t_game;
 
@@ -73,8 +74,10 @@ void set_images (t_game *game);
 void put_images(t_game *game);
 int key_hook(int keycode, t_game *game);
 int close_game(t_game *game);
-void kill_player(t_game *game);
 void update_player(t_game *game,int keycode);
-void kill_player(t_game *game);
 void display_score(t_game *game);
+int loop_hook(t_game *game);
+int find_path(t_game *map,int x_p, int y_p,int x_e,int y_e);
+char **make_visited_array(int height, int width);
+
 #endif
