@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:17:19 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/26 15:41:33 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/26 19:57:33 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,10 @@ int check_rect (t_game *map)
 	return (1);
 }
 
-int check_char(t_game *map)
+int check_char(t_game *map,char *file)
 {
 	int i;
 	int j;
-	char **visited ;
-	
 	
 	map->n_player = 0;
 	map->n_exit = 0;
@@ -97,16 +95,15 @@ int check_char(t_game *map)
 			if (map->map[i][j] == 'P')
 				map->n_player++;
 			if (map->map[i][j] == 'E')
+			{
+				if (!valid_path(map,file,i,j))
+					return (0);
 				map->n_exit++;
+			}
 			if (map->map[i][j] == 'C')
 			{
-				visited = make_visited_array(map->height, map->width);
-				if(!find_path(map,map->x_player,map->y_player,visited,'C'))
-				{
-						free_aray(visited);
-						return (0);
-				}
-				free_aray(visited);
+				if (!valid_path(map,file,i,j))
+					return (0);
 				map->n_collect++;
 			}
 		}

@@ -10,14 +10,14 @@ LIBFT = $(addprefix libft/, $(LIBFT_LIB))
 FT_PRINTF_LIB = libftprintf.a
 FT_PRINTF = $(addprefix ft_printf/, $(FT_PRINTF_LIB))
 
-CFLAGS := -Wall -Wextra -Werror 
+CFLAGS := -Wall -Wextra -Werror -g 
 CC = cc
 RM = rm -f
 LIB = -L /usr/local/lib -lmlx -framework OpenGl -framework AppKit
 OBJ = $(SRC:.c=.o)
 BOBJ = $(BSRC:.c=.o)
 
-%.o: %.c mandatory/so_long.h mandatory/get_next_line.h
+%.o: %.c mandatory/so_long.h mandatory/get_next_line.h bonus/so_long.h bonus/get_next_line.h
 	$(CC)  $(CFLAGS) -c $< -o $@
 
 all: $(NAME)

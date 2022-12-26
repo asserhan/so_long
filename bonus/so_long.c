@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:43:06 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/26 14:35:21 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/26 18:29:37 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ int main(int argc,char	**argv)
 	i = 0;
 	if (argc == 2)
 	{
-		
-		game.map = get_map(argv[1],&game);
-	
+		(void)argv;
+		game.map = get_map("../map_files/map1.ber",&game);
 		if (!game.map)
 		{
 			game.mlx = mlx_init();
@@ -35,7 +34,7 @@ int main(int argc,char	**argv)
 			mlx_loop(game.mlx);
 			
 		}
-		system("leaks a.out");
+		//∏system("leaks so_long");
 	}
 	return (0);	
 }

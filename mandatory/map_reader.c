@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:04:54 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/26 15:39:09 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/26 19:58:18 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	**read_map(char *file,t_game *map)
 		line = get_next_line(map->fd);
 		if (line == NULL)
 			break ;
-		map->height++;
 		holder = lines;
 		lines = ft_strjoin(lines, line);
 		free(line);
@@ -97,40 +96,71 @@ char **make_visited_array(int height, int width)
 	return (new_map);
 }
 
-int find_path(t_game *map, int x_p, int y_p, char **visited,char target)
-{
-	 //static int c;
+// int find_path(t_game *map, int x_p, int y_p, char **visited)
+// {
+// 	 //static int c;
 	
-	if (x_p < 0 || y_p < 0 || x_p >= map->height || y_p >= map->width
-			|| visited[x_p][y_p ] == '1' || map->map[x_p][y_p] == '1' )
+// 	if (x_p < 0 || y_p < 0 || x_p >= map->height || y_p >= map->width
+// 			|| visited[x_p][y_p ] == '1' || map->map[x_p][y_p] == '1' )
+// 		return (0);
+// 	if (map->map[x_p][y_p] == 'E')
+// 		return (1);
+// 	visited[x_p][y_p] = '1';
+// 	if(find_path(map, x_p + 1,y_p, visited))
+// 		return (1);
+// 	if(find_path(map, x_p - 1 ,y_p , visited))
+// 		return (1);
+// 	if(find_path(map, x_p,y_p + 1, visited))
+// 		return (1);
+// 	if(find_path(map, x_p ,y_p - 1, visited))
+// 		return (1);
+// 	return (0);
+// }
+int find_path (t_cords cords,char **map)
+{
+	if (cords.x_p == cords.x_e && cords.y_p == cords.y_e)
+		return (1);
+	if (map[cords.x_p][cords.y_p] == '1')
 		return (0);
-	if (map->map[x_p][y_p] == target)
+	map[cords.x_p][cords.y_p] = '1';
+	if(find_path((t_cords){cords.x_p+1,cords.y_p,cords.x_e,cords.y_e},map))
 		return (1);
-	visited[x_p][y_p] = '1';
-	if(find_path(map, x_p + 1,y_p, visited,target))
+	if(find_path((t_cords){cords.x_p - 1,cords.y_p,cords.x_e,cords.y_e},map))
 		return (1);
-	if(find_path(map, x_p - 1 ,y_p , visited,target))
+	if(find_path((t_cords){cords.x_p,cords.y_p+1,cords.x_e,cords.y_e},map))
 		return (1);
-	if(find_path(map, x_p,y_p + 1, visited,target))
+	if(find_path((t_cords){cords.x_p,cords.y_p-1,cords.x_e,cords.y_e},map))
 		return (1);
-	if(find_path(map, x_p ,y_p - 1, visited,target))
-		return (1);
+	map[cords.x_p][cords.y_p] = '0';
 	return (0);
 }
-
-int valid_path (t_game *map)
+int valid_path (t_game *game,char *file,int dst_x, int dst_y)
 {
-	find_cords(map);
-	char **visited = make_visited_array(map->height, map->width);
-	if (!find_path(map, map->x_player,map->y_player, visited,'E'))
+	char **map;
+	map =read_map(file,game);
+	find_cords(game);
+	if (!find_path((t_cords) {game->x_player, game->y_player,dst_x, dst_y},map))
 	{
-		free_map(map);
-		free_aray(visited);
+		printf("invalid map !!");
+		free_aray(map);
 		return (0);
 	}
-	free_aray(visited);
+	free_aray(map);
 	return (1);
 }
+// int valid_path (t_game *map)
+// {
+// 	find_cords(map);
+// 	char **visited = make_visited_array(map->height, map->width);
+// 	if (!find_path(map, map->x_player,map->y_player, visited))
+// 	{
+// 		free_map(map);
+// 		free_aray(visited);
+// 		return (0);
+// 	}
+// 	free_aray(visited);
+// 	return (1);
+// }
 char **get_map(char *file,t_game *map)
 {
 	if (!check_file(file,map))
@@ -148,13 +178,13 @@ char **get_map(char *file,t_game *map)
 		free_map(map);
 		return (ft_printf("Error\nMap not closed by walls\n"),NULL);
 	}
-	if (!check_char(map))
+	// if (!valid_path(map))
+	// 	return (ft_printf("Error\nThe is no valid path in the map\n"),NULL);
+	if (!check_char(map,file))
 	{
 		free_map(map);
 		return (ft_printf("Error\nWrong characters or duplicates (exit/start)\n"),NULL);
 	}
-	if (!valid_path(map))
-		return (ft_printf("Error\nThe is no valid path in the map\n"),NULL);
 	return (map->map);
 }
 
