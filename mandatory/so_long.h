@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:08:58 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/26 19:51:59 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/27 21:10:58 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct s_game
 	void	*exit_img;
 	void	*collect_img;
 	int     movement;
-    int     finish;
     
 }               t_game;
 typedef struct s_cords
@@ -72,16 +71,17 @@ int check_lines(t_game *map);
 char **get_map(char *file,t_game *map);
 int check_cols (t_game *map);
 int check_rect (t_game *map);
-int check_char(t_game *map,char *file);
+int check_char(t_game *map);
 void find_cords(t_game *map);
 int valid_path (t_game *game,char *file,int dst_x, int dst_y);
+int check_path (t_game *map,char *file);
+int check_collect (t_game *map,char *file);
 void set_images (t_game *game);
 void put_images(t_game *game);
 int key_hook(int keycode, t_game *game);
 int close_game(t_game *game);
 void update_player(t_game *game,int keycode);
 int find_path (t_cords cords,char **map);
-char **make_visited_array(int height, int width);
 void free_aray(char **array);
 
 

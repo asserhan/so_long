@@ -1,8 +1,10 @@
 NAME = so_long
 
-SRC = mandatory/check_map.c mandatory/get_next_line.c mandatory/get_next_line_utils.c mandatory/map_reader.c mandatory/play_game.c mandatory/so_long.c mandatory/window.c
+SRC = mandatory/check_map.c mandatory/get_next_line.c mandatory/get_next_line_utils.c mandatory/map_reader.c \
+		 mandatory/play_game.c mandatory/so_long.c mandatory/window.c mandatory/valid_path.c
 
-BSRC = bonus/bonus.c bonus/check_map.c bonus/get_next_line.c bonus/get_next_line_utils.c bonus/map_reader.c bonus/play_game.c bonus/so_long.c bonus/window.c
+BSRC = bonus/bonus.c bonus/check_map.c bonus/get_next_line.c bonus/get_next_line_utils.c bonus/map_reader.c \
+			 bonus/play_game.c bonus/so_long.c bonus/window.c bonus/valid_path.c
 
 LIBFT_LIB = libft.a
 LIBFT = $(addprefix libft/, $(LIBFT_LIB))

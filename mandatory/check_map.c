@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:17:19 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/26 19:57:33 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/27 21:06:18 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,12 @@ int check_rect (t_game *map)
 	return (1);
 }
 
-int check_char(t_game *map,char *file)
+int check_char(t_game *map)
 {
 	int i;
 	int j;
 	
 	map->n_player = 0;
-	map->n_exit = 0;
-	map->n_collect = 0;
 	i = -1;
 	while (map->map[++i] != NULL)
 	{
@@ -93,22 +91,12 @@ int check_char(t_game *map,char *file)
 			if (map->map[i][j] != '1' && map->map[i][j] != '0'&& map->map[i][j] != 'P' && map->map[i][j] != 'C' && map->map[i][j] != 'E')
 				return (0);
 			if (map->map[i][j] == 'P')
-				map->n_player++;
-			if (map->map[i][j] == 'E')
-			{
-				if (!valid_path(map,file,i,j))
-					return (0);
-				map->n_exit++;
-			}
-			if (map->map[i][j] == 'C')
-			{
-				if (!valid_path(map,file,i,j))
-					return (0);
-				map->n_collect++;
-			}
+				map->n_player++;	
 		}
 	}
-	if (!(map->n_player == 1 && map->n_exit == 1 && map->n_collect >= 1))
+	if (!(map->n_player == 1))
 		return (0);
 	return (1);
 }
+
+
