@@ -6,33 +6,63 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:43:06 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/28 17:36:45 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 21:41:15 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int argc,char	**argv)
+void	set_images(t_game *game)
 {
-	t_game game;
-	int i;
+	game->rate = 0;
+	game->sprite = 1;
+	game->screen_img = mlx_xpm_file_to_image(game->mlx, \
+			"bonus/img/screen.xpm", &game->img_width, &game->img_height);
+	game->wall_img = mlx_xpm_file_to_image(game->mlx, \
+			"bonus/img/wall.xpm", &game->img_width, &game->img_height);
+	game->player_img = mlx_xpm_file_to_image(game->mlx, \
+			"bonus/img/player1.xpm", &game->img_width, &game->img_height);
+	game->collect_img = mlx_xpm_file_to_image(game->mlx,
+			"bonus/img/collectible.xpm", &game->img_width, &game->img_height);
+	game->enemy_img = mlx_xpm_file_to_image(game->mlx,
+			"bonus/img/enemy.xpm", &game->img_width, &game->img_height);
+	game->exit_img = mlx_xpm_file_to_image(game->mlx,
+			"bonus/img/exit.xpm", &game->img_width, &game->img_height);
+	if (!game->screen_img || !game->wall_img || !game->player_img
+		|| !game->collect_img || !game->enemy_img || !game->exit_img)
+	{
+		ft_printf("Invalid xpm image \n");
+		exit (0);
+	}
+}
+
+void	set_walls(t_game *game, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx, game->mlx_win, \
+		game->wall_img, y * 64, x * 64);
+}
+
+int	main(int argc, char	**argv)
+{
+	t_game	game;
+	int		i;
 
 	i = 0;
 	if (argc == 2)
 	{
-		game.map = get_map(argv[1],&game);
+		game.map = get_map(argv[1], &game);
 		if (game.map != NULL)
 		{
 			game.mlx = mlx_init();
-			game.mlx_win = mlx_new_window(game.mlx,(game.width * 64),(game.height *64),"so_long");
+			game.mlx_win = mlx_new_window(game.mlx, (game.width * 64), \
+					(game.height * 64), "so_long");
 			set_images(&game);
 			put_images(&game);
-			mlx_hook(game.mlx_win,2,0, key_hook,&game);
-			mlx_hook(game.mlx_win,17,0,close_game,&game);
-			mlx_loop_hook(game.mlx,loop_hook ,&game);
+			mlx_hook(game.mlx_win, 2, 0, key_hook, &game);
+			mlx_hook(game.mlx_win, 17, 0, close_game, &game);
+			mlx_loop_hook(game.mlx, loop_hook, &game);
 			mlx_loop(game.mlx);
 		}
-		system("leaks so_long");
 	}
 	return (0);
 }

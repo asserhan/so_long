@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:08:58 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/28 17:35:15 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 21:41:04 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "../ft_printf/ft_printf.h"
 # include <fcntl.h>
 # include <stdio.h>
-# define K_esc 53
+# define K_ESC 53
 # define K_Q 12
 # define K_W 13
 # define K_S 1
@@ -32,21 +32,21 @@
 
 typedef struct s_game
 {
-    int     fd;
-    char    **map;
-    int     width;
-    int     height;
+	int		fd;
+	char	**map;
+	int		width;
+	int		height;
 	int		n_player;
 	int		n_exit;
 	int		n_collect;
-    int     x_player;
-    int     y_player;
-    int     x_exit;
-    int     y_exit;
-    void    *mlx;
-    void    *mlx_win;
+	int		x_player;
+	int		y_player;
+	int		x_exit;
+	int		y_exit;
+	void	*mlx;
+	void	*mlx_win;
 	void	*img;
-    int		img_width;
+	int		img_width;
 	int		img_height;
 	void	*screen_img;
 	void	*wall_img;
@@ -54,40 +54,42 @@ typedef struct s_game
 	void	*enemy_img;
 	void	*exit_img;
 	void	*collect_img;
-	int     movement;
-    int     rate;
-    int     sprite;
+	int		movement;
+	int		rate;
+	int		sprite;
 
-}               t_game;
+}				t_game;
 
 typedef struct s_cords
 {
-    int x_e;
-    int y_e;
-    int x_p;
-    int y_p;
-}               t_cords;
+	int	x_e;
+	int	y_e;
+	int	x_p;
+	int	y_p;
+}				t_cords;
 
-int check_file (char *file,t_game *map);
-char	**read_map(char *file,t_game *map);
+int		check_file(char *file, t_game *map);
+char	**read_map(char *file, t_game *map);
 void	free_map(t_game *map);
-int check_lines(t_game *map);
-char **get_map(char *file,t_game *map);
-int check_cols (t_game *map);
-int check_rect (t_game *map);
-int check_char(t_game *map);
-void find_cords(t_game *map);
-int valid_path (t_game *game,char *file,int dst_x, int dst_y);
-int check_path (t_game *map,char *file);
-int check_collect (t_game *map,char *file);
-void set_images (t_game *game);
-void put_images(t_game *game);
-int key_hook(int keycode, t_game *game);
-int close_game(t_game *game);
-void update_player(t_game *game,int keycode);
-int find_path (t_cords cords,char **map);
-void free_aray(char **array);
-void display_score(t_game *game);
-int loop_hook(t_game *game);
+int		check_lines(t_game *map);
+char	**get_map(char *file, t_game *map);
+int		check_cols(t_game *map);
+int		check_rect(t_game *map);
+int		check_char(t_game *map);
+void	find_cords(t_game *map);
+int		valid_path(t_game *game, char *file, int dst_x, int dst_y);
+int		check_path(t_game *map, char *file);
+int		check_collect(t_game *map, char *file);
+void	set_images(t_game *game);
+void	set_walls(t_game *game, int x, int y);
+void	put_images(t_game *game);
+int		key_hook(int keycode, t_game *game);
+int		close_game(t_game *game);
+void	update_player(t_game *game, int keycode);
+int		ft_play(t_game *game);
+int		find_path(t_cords cords, char **map);
+void	free_aray(char **array);
+void	display_score(t_game *game);
+int		loop_hook(t_game *game);
 
 #endif
