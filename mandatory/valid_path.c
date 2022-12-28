@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 20:21:48 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/27 21:02:34 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/27 23:17:34 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int valid_path (t_game *game,char *file,int dst_x, int dst_y)
 	find_cords(game);
 	if (!find_path((t_cords) {game->x_player, game->y_player,dst_x, dst_y},map))
 	{
-		//printf("invalid map !!");
 		free_aray(map);
 		return (0);
 	}

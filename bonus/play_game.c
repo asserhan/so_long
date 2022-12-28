@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:34:54 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/27 21:29:35 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/27 23:17:20 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int ft_play(t_game *game)
 	}
 	if (game->map[game->x_player][game->y_player] == 'X')
 	{
-		printf("You lose\n");
+		ft_printf("You lose\n");
 		return (close_game(game),0);
 	}
 	return (1);

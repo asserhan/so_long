@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:43:06 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/27 20:43:31 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/27 23:31:58 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main(int argc,char **argv)
 			mlx_loop(game.mlx);
 			
 		}
-		system("leaks so_long");
+		//system("leaks so_long");
 	}
 	return (0);
 }

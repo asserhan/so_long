@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 01:53:11 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/27 22:50:19 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:01:21 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void display_score(t_game *game)
 
 int loop_hook(t_game *game)
 {
-    if (game->rate < 3000)
+    if (game->rate < 2000)
     {
         game->rate++;
         return (0);
