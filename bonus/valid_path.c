@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 21:04:25 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/28 14:05:19 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:36:51 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void find_cords(t_game *map)
 {
 	int i;
 	int j;
-	
+
 	i = -1;
 	while (map->map[++i]!=NULL)
 	{
@@ -71,7 +71,7 @@ int check_path (t_game *map,char *file)
 {
 	int i;
 	int j;
-	
+
 	map->n_exit = 0;
 	i = -1;
 	while (map->map[++i] != NULL)
@@ -95,7 +95,7 @@ int check_collect (t_game *map,char *file)
 {
 	int i;
 	int j;
-	
+
 	map->n_collect = 0;
 	i = -1;
 	while (map->map[++i] != NULL)

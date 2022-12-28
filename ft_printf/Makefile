@@ -2,15 +2,15 @@ SRC =	ft_printf.c ft_putnbrs.c ft_printf_utils.c
 OBJ	= $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
-CC = cc 
-RM = rm -f 
+CC = cc
+RM = rm -f
 
-%.o: %c 
+%.o: %c
 	$(CC)  $(CFLAGS) -c $<
 
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
-                                                
+
 all: $(NAME)
 
 clean:

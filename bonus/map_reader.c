@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:04:54 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/27 21:41:20 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:36:37 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	**read_map(char *file,t_game *map)
 {
 	char	*line;
 	char	*lines;
-	char	*holder; 
+	char	*holder;
 	char	**res;
 
 	map->fd = open(file, O_RDONLY);
@@ -42,7 +42,7 @@ char	**read_map(char *file,t_game *map)
 void free_aray(char **array)
 {
 	int i;
-	
+
 	i = 0;
 	while (array[i] != NULL)
 		free (array[i++]);

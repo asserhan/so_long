@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:08:58 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/27 22:25:34 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:35:15 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_game
 	int     movement;
     int     rate;
     int     sprite;
-    
+
 }               t_game;
 
 typedef struct s_cords

@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:43:06 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/27 22:32:22 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:36:45 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int argc,char	**argv)
 {
 	t_game game;
 	int i;
-	
+
 	i = 0;
 	if (argc == 2)
 	{
@@ -34,5 +34,5 @@ int main(int argc,char	**argv)
 		}
 		system("leaks so_long");
 	}
-	return (0);	
+	return (0);
 }

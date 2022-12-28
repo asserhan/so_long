@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 13:30:28 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/27 22:33:03 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:34:03 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void put_images(t_game *game)
             if(game->map[i][j] == 'E')
                 mlx_put_image_to_window(game->mlx,game->mlx_win,game->exit_img,j*64,i*64);
             if(game->map[i][j] == 'X')
-                mlx_put_image_to_window(game->mlx,game->mlx_win,game->enemy_img,j*64,i*64); 
+                mlx_put_image_to_window(game->mlx,game->mlx_win,game->enemy_img,j*64,i*64);
         }
         display_score(game);
     }

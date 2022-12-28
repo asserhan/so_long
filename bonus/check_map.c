@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 20:17:19 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/27 21:06:50 by hasserao         ###   ########.fr       */
+/*   Created: 2022/12/28 17:31:22 by hasserao          #+#    #+#             */
+/*   Updated: 2022/12/28 17:31:26 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 int check_file (char *file,t_game *map)
 {
-    map->fd = open(file, O_RDONLY);
-	
-    if (map->fd == -1)
+	map->fd = open(file, O_RDONLY);
+
+	if (map->fd == -1)
 		return (0);
-    if(ft_strrchr(file, '.')== NULL || ft_strncmp(ft_strrchr(file, '.'), ".ber",4) !=0)
+	if(ft_strrchr(file, '.')== NULL || ft_strncmp(ft_strrchr(file, '.'), ".ber",4) !=0)
 		return (0);
 	else
 		return (1);
@@ -31,7 +31,7 @@ int check_lines(t_game *map)
 	map->height = 0;
 	map->width = 0;//number of columns
 	i = 0;
-	
+
 	while (map->map[map->height]!=NULL)
 	{
 		while (map->map[map->height][map->width] !='\0')
@@ -64,7 +64,7 @@ int check_rect (t_game *map)
 {
 	int i;
 	i = 0;
-	
+
 	if (!map->map)
 		return (0);
 	while (map->map[i]!= NULL)
@@ -80,7 +80,7 @@ int check_char(t_game *map)
 {
 	int i;
 	int j;
-	
+
 	map->n_player = 0;
 	i = -1;
 	while (map->map[++i] != NULL)

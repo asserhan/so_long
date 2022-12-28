@@ -1,10 +1,10 @@
 NAME = so_long
 
 SRC = mandatory/check_map.c mandatory/get_next_line.c mandatory/get_next_line_utils.c mandatory/map_reader.c \
-		 mandatory/play_game.c mandatory/so_long.c mandatory/window.c mandatory/valid_path.c
+		mandatory/play_game.c mandatory/so_long.c mandatory/window.c mandatory/valid_path.c mandatory/update.c
 
 BSRC = bonus/bonus.c bonus/check_map.c bonus/get_next_line.c bonus/get_next_line_utils.c bonus/map_reader.c \
-			 bonus/play_game.c bonus/so_long.c bonus/window.c bonus/valid_path.c
+			bonus/play_game.c bonus/so_long.c bonus/window.c bonus/valid_path.c
 
 LIBFT_LIB = libft.a
 LIBFT = $(addprefix libft/, $(LIBFT_LIB))
@@ -12,7 +12,7 @@ LIBFT = $(addprefix libft/, $(LIBFT_LIB))
 FT_PRINTF_LIB = libftprintf.a
 FT_PRINTF = $(addprefix ft_printf/, $(FT_PRINTF_LIB))
 
-CFLAGS := -Wall -Wextra -Werror -g 
+CFLAGS := -Wall -Wextra -Werror -g
 CC = cc
 RM = rm -f
 LIB = -L /usr/local/lib -lmlx -framework OpenGl -framework AppKit
@@ -38,11 +38,11 @@ clean:
 	make clean -sC libft/
 	make clean -sC ft_printf/
 	$(RM) $(BOBJ) $(OBJ)
-	
+
 fclean: clean
 	$(RM) $(NAME)
-	make fclean -C libft/ 
-	make fclean -C ft_printf/ 
+	make fclean -C libft/
+	make fclean -C ft_printf/
 
 re: fclean all
 

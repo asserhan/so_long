@@ -6,18 +6,19 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 15:50:48 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/15 14:35:50 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:38:51 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 # include<stdlib.h>
 # include<unistd.h>
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
-#endif
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);

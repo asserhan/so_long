@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:34:54 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/27 23:17:20 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:35:19 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void update_player(t_game *game,int keycode)
 		game->player_img = mlx_xpm_file_to_image(game->mlx, "bonus/img/player1.xpm", &game->img_width, &game->img_height);
 	if (keycode == K_A)
 		game->player_img = mlx_xpm_file_to_image(game->mlx, "bonus/img/player1.xpm", &game->img_width, &game->img_height);
-	if (keycode == K_D)	
+	if (keycode == K_D)
 		game->player_img = mlx_xpm_file_to_image(game->mlx, "bonus/img/player2.xpm", &game->img_width, &game->img_height);
-}	
+}
 int close_game(t_game *game)
 {
     mlx_destroy_image(game->mlx,game->screen_img);
@@ -68,7 +68,7 @@ static int ft_play(t_game *game)
 static int move_up_down(t_game *game,int keycode)
 {
 	int c;
-	
+
 	update_player(game,keycode);
 	if(keycode == K_W)
 	{
@@ -141,7 +141,7 @@ int key_hook(int keycode, t_game *game)
 	if (keycode == K_esc || keycode == K_Q)
 		close_game(game);
 	if (keycode == K_W)
-		
+
 		c = move_up_down(game,keycode);
 	if (keycode == K_S)
 		c = move_up_down(game,keycode);
@@ -155,5 +155,5 @@ int key_hook(int keycode, t_game *game)
 		put_images(game);
 	}
 	return (1);
-	
+
 }
