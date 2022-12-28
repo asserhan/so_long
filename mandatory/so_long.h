@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:08:58 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/28 17:38:59 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 23:42:42 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int		ft_play(t_game *game);
 int		key_hook(int keycode, t_game *game);
 int		close_game(t_game *game);
 void	update_player(t_game *game, int keycode);
-int		find_path(t_cords cords, char **map);
+int		find_path(t_cords cords, char **map, int target);
 void	free_aray(char **array);
+
 #endif

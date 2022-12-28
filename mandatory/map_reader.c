@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:04:54 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/28 17:38:52 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/28 23:18:13 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ char	**get_map(char *file, t_game *map)
 		free_map(map);
 		return (ft_printf("Error\nMap not closed by walls\n"), NULL);
 	}
-	if (!check_char(map) || !check_path(map, file)
-		|| !check_collect (map, file))
+	if (!check_char(map) || !check_collect (map, file)
+		|| !check_path(map, file))
 	{
 		free_map(map);
 		return (ft_printf("Error\nInvalid map \n"), NULL);
