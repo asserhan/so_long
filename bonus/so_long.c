@@ -6,11 +6,36 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:43:06 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/28 21:41:15 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:10:00 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	check_collect(t_game *map, char *file)
+{
+	int	i;
+	int	j;
+
+	map->n_collect = 0;
+	i = -1;
+	while (map->map[++i] != NULL)
+	{
+		j = -1;
+		while (map->map[i][++j])
+		{
+			if (map->map[i][j] == 'C')
+			{
+				if (!valid_path(map, file, i, j))
+					return (0);
+				map->n_collect++;
+			}
+		}
+	}
+	if (!(map->n_collect >= 1))
+		return (0);
+	return (1);
+}
 
 void	set_images(t_game *game)
 {

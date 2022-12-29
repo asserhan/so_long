@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 20:21:48 by hasserao          #+#    #+#             */
-/*   Updated: 2022/12/29 00:28:01 by hasserao         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:00:10 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	find_path(t_cords cords, char **map, int target)
 int	valid_path(t_game *game, char *file, int dst_x, int dst_y)
 {
 	char	**map;
-	int 	target;
+	int		target;
 
 	map = read_map(file, game);
 	find_cords(game);
@@ -95,57 +95,3 @@ int	valid_path(t_game *game, char *file, int dst_x, int dst_y)
 	free_aray(map);
 	return (1);
 }
-
-
-
-int	check_collect(t_game *map, char *file)
-{
-	int	i;
-	int	j;
-
-	map->n_collect = 0;
-	i = -1;
-	while (map->map[++i] != NULL)
-	{
-		j = -1;
-		while (map->map[i][++j])
-		{
-			if (map->map[i][j] == 'C')
-			{
-				if (!valid_path(map, file, i, j))
-					return (0);
-				map->n_collect++;
-			}
-		}
-	}
-	if (!(map->n_collect >= 1))
-		return (0);
-	return (1);
-}
-
-int	check_path(t_game *map, char *file)
-{
-	int	i;
-	int	j;
-
-	map->n_exit = 0;
-	i = -1;
-	while (map->map[++i] != NULL)
-	{
-		j = -1;
-		while (map->map[i][++j])
-		{
-			if (map->map[i][j] == 'E')
-			{
-				if (!valid_path(map, file, i, j))
-					return (0);
-				map->n_exit++;
-			}
-		}
-	}
-	if (!(map->n_exit == 1))
-		return (0);
-	return (1);
-}
-
-
