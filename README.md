@@ -40,20 +40,11 @@ To compile the **mandatory** part (character movement and item collection) use:
 ```sh
 make
 ```
-
-<p align="center">
-<img src="https://github.com/andersonhsporto/ft-so_long/blob/main/img/Peek%2003-11-2021%2000-16.gif" width="800px" alt="mandatory"/><br>
-</p>
-
 To compile the **bonus** part (animation, movement counter and enemies) use:
 
 ```sh
 make bonus
 ```
-<p align="center">
-<img src="https://github.com/andersonhsporto/ft-so_long/blob/main/img/Peek%2003-11-2021%2000-23.gif" width="400px" alt="bonus"/><br>
-</p>
-
 ## Usage
 
 After compiling the project, the executable file with the name **so_long** will be created, to run the game call the executable passing the map as an argument:
